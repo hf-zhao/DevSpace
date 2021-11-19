@@ -20,9 +20,11 @@ function startup(work_dir)
     % ----- 配置工作目录 -----
     if  WorkState.WORK_DIR ~= 0
         cd(userpath);
-        disp("@{Tips}:Welcome back, Mr. Zhao!");
+        % disp("@{Tips}:Welcome back, Mr. Zhao!");
+        cprintf('*blue', '[Tips]:Welcome back, Mr.Zhao !\n');
     else
-        disp("@{Tips}:Initializing the workspace ... ... ");
+        % disp("@{Tips}:Initializing the workspace ... ... ");
+        cprintf('*blue', '[Tips]:Initializing the workspace ... ...\n');
 
         % ---------------------------------------
         % 方式一：绝对路径
@@ -59,7 +61,8 @@ function startup(work_dir)
         addpath(config_path);
         % 保证以任何方式启动MATLAB都以指定工作目录启动
         cd(userpath);
-        disp("@{Tips}:Initialization succeeded!");
+        % disp("@{Tips}:Initialization succeeded!");
+        cprintf('*blue', '[Tips]:Initialization succeeded!\n')
         % 工作空间初始化完成
         WorkState.Properties.Writable = true;
         WorkState.WORK_DIR = 1;
@@ -68,12 +71,15 @@ function startup(work_dir)
 
     % ----- 配置工作环境 -----
     if WorkState.WORK_ENV ~= 0
-        disp("@{Tips}:Everything is ready!");
+        % disp("@{Tips}:Everything is ready!");
+        cprintf('*blue', '[Tips]:Everything is ready!\n');
     else
-        disp("@{Tips}:Loading the development environment ... ... ");
+        % disp("@{Tips}:Loading the development environment ... ... ");
+        cprintf('*blue', '[Tips]:Loading the development environment ... ...\n ');
         % 环境一：机器人工具箱
         if exist('./config/support/Robotics Toolbox for MATLAB', 'file') == 7
-            disp("@{Tips}:Loading <Robotics Toolbox for MATLAB> ......");
+            % disp("@{Tips}:Loading <Robotics Toolbox for MATLAB> ......");
+            cprintf('*blue', '[Tips]:Loading <Robotics Toolbox for MATLAB> ......\n');
             addpath('./config/support/');
             addpath('./config/support/Robotics Toolbox for MATLAB/lib/common');
             addpath('./config/support/Robotics Toolbox for MATLAB/lib/spatial-math');
@@ -86,7 +92,8 @@ function startup(work_dir)
             addpath('./config/support/Robotics Toolbox for MATLAB/simulink');
             addpath('./config/support/Robotics Toolbox for MATLAB/demos');
             savepath;
-            disp("@{Tips}:Successfully loaded！");
+            % disp("@{Tips}:Successfully loaded！");
+            cprintf('*blue', '[Tips]:Successfully loaded！\n');
             % 工作环境初始化完成
             WorkState.Properties.Writable = true;
             WorkState.WORK_ENV = 1;
